@@ -99,7 +99,7 @@
         }
 
         
-@keyframes fadeInLine1 {
+        @keyframes fadeInLine1 {
     0% { opacity: 0; transform: translateY(20px) scale(0.95); filter: blur(4px); }
     100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
 }
@@ -143,6 +143,16 @@
 
 .love-note p span:nth-child(3) {
     animation: fadeInLine3 1.5s ease-out 1.8s forwards;
+}
+
+canvas.fireworks {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
 }
 
         .gallery {
@@ -374,7 +384,9 @@
         </div>
         <!-- <div class="message">Em đồng ý làm vợ anh nhé? 💍</div> -->
         <div class="typewriter">Em đồng ý làm vợ anh nhé? 💍</div>
-        <button class="button" onclick="alert('Anh yêu em rất nhiều! 💖')">Đồng ý 💕</button>
+        <button class="button"  id="agreeBtn">Đồng ý 💕</button>
+        <canvas class="fireworks"></canvas>
+
     </div>
 
     <div class="love-note">
@@ -504,6 +516,8 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
     <script>
+        document.getElementById('agreeBtn').addEventListener('click', triggerFireworks);
+
         Fancybox.bind("[data-fancybox]", {});
         new Swiper(".gallery-slider", {
             slidesPerView: "auto",
@@ -525,6 +539,65 @@
             setTimeout(() => heart.remove(), 10000);
         }
         setInterval(createHeart, 300);
+
+        document.getElementById('agreeBtn').addEventListener('click', triggerFireworks);
+
+        function triggerFireworks() {
+            alert('Anh yêu em rất nhiều! 💖');
+            const canvas = document.querySelector('.fireworks');
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+
+            function resize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+
+            window.addEventListener('resize', resize);
+            resize();
+
+            const numBursts = 5;
+            for (let b = 0; b < numBursts; b++) {
+                const centerX = Math.random() * canvas.width;
+                const centerY = Math.random() * canvas.height;
+
+                for (let i = 0; i < 50; i++) {
+                    particles.push({
+                        x: centerX,
+                        y: centerY,
+                        vx: (Math.random() - 0.5) * 10,
+                        vy: (Math.random() - 0.5) * 10,
+                        alpha: 1,
+                        radius: Math.random() * 3 + 2,
+                        color: `hsl(${Math.random() * 360}, 100%, 70%)`
+                    });
+                }
+            }
+
+            const interval = setInterval(() => {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(p => {
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    p.alpha -= 0.01;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(${hexToRgb(p.color)}, ${p.alpha})`;
+                    ctx.fill();
+                });
+                particles = particles.filter(p => p.alpha > 0);
+                if (particles.length === 0) clearInterval(interval);
+            }, 30);
+
+            function hexToRgb(h) {
+                const tmp = document.createElement('div');
+                tmp.style.color = h;
+                document.body.appendChild(tmp);
+                const cs = getComputedStyle(tmp).color;
+                document.body.removeChild(tmp);
+                return cs.match(/\d+, \d+, \d+/)[0];
+            }
+        }
     </script>
 
 </body>
