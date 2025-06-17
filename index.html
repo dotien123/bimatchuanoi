@@ -447,7 +447,6 @@ canvas.fireworks {
             <div id="big-heart">❤️</div>
             <img id="photo-right" src="https://i.ibb.co/LdRF3d33/415934719-2618621848303125-7925422206276226397-n.jpg" alt="Tâm Lương">
         </div>
-        <!-- <div class="message">Em đồng ý làm vợ anh nhé? 💍</div> -->
         <div class="typewriter">Em đồng ý làm vợ anh nhé? 💍</div>
         <button class="button"  id="agreeBtn">Đồng ý 💕</button>
         <button class="button" id="denyBtn" style="background: gray;">Từ chối 🙅‍♀️</button>
@@ -559,12 +558,16 @@ canvas.fireworks {
             </div>
         </div>
     </div>
+    <audio id="fail-sound" src="https://www.myinstants.com/media/sounds/windows-error.mp3"></audio>
 
     <!-- SwiperJS & Fancybox -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
+    
     <script>
         document.getElementById('denyBtn').addEventListener('click', () => {
+            const failSound = document.getElementById('fail-sound');
+            failSound.play();
             alert('Bạn không thể từ chối. Hãy thử lại! 😜');
         });
 
