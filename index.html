@@ -397,6 +397,10 @@ canvas.fireworks {
             100% { transform: translate(-50%, -50%) scale(1); }
         }
 
+        .button + .button {
+            margin-left: 10px;
+        }
+
     </style>
 </head>
 
@@ -446,6 +450,7 @@ canvas.fireworks {
         <!-- <div class="message">Em đồng ý làm vợ anh nhé? 💍</div> -->
         <div class="typewriter">Em đồng ý làm vợ anh nhé? 💍</div>
         <button class="button"  id="agreeBtn">Đồng ý 💕</button>
+        <button class="button" id="denyBtn" style="background: gray;">Từ chối 🙅‍♀️</button>
         <canvas class="fireworks"></canvas>
 
     </div>
@@ -559,6 +564,10 @@ canvas.fireworks {
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
     <script>
+        document.getElementById('denyBtn').addEventListener('click', () => {
+            alert('Bạn không thể từ chối. Hãy thử lại! 😜');
+        });
+
         document.getElementById('agreeBtn').addEventListener('click', triggerFireworks);
 
         Fancybox.bind("[data-fancybox]", {});
