@@ -335,6 +335,68 @@ canvas.fireworks {
                 width: 65vw;
             }
         }
+
+        #photo-left, #photo-right {
+            position: relative;
+        }
+
+        @keyframes slideInLeft {
+            0% { transform: translateX(-200%); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideInRight {
+            0% { transform: translateX(200%); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        #big-heart {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            font-size: 80px;
+            transform: translate(-50%, -50%) scale(1);
+            animation: pulseHeart 1s ease-in-out infinite;
+            z-index: 10000;
+        }
+
+        @keyframes pulseHeart {
+            0% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.3) rotate(10deg); }
+            100% { transform: translate(-50%, -50%) scale(1); }
+        }
+        #photo-left, #photo-right {
+            position: relative;
+        }
+
+        @keyframes slideInLeft {
+            0% { transform: translateX(-200%); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideInRight {
+            0% { transform: translateX(200%); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        #big-heart {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            font-size: 80px;
+            transform: translate(-50%, -50%) scale(1);
+            animation: pulseHeart 1s ease-in-out infinite;
+            z-index: 10000;
+        }
+
+        @keyframes pulseHeart {
+            0% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.3) rotate(10deg); }
+            100% { transform: translate(-50%, -50%) scale(1); }
+        }
+
     </style>
 </head>
 
@@ -377,10 +439,9 @@ canvas.fireworks {
 
     <div class="container">
         <div class="photos">
-            <!-- <img src="https://i.ibb.co/Wvx1zc6d/photo-2025-05-30-16-14-49.jpg" alt="Bạn">
-            <img src="https://i.ibb.co/Wv6jdNMV/167929045-1851712421660742-7541219168631573205-n.jpg" alt="Cô ấy"> -->
-            <img src="https://i.ibb.co/GQBdmm5Y/487749324-1319657995929492-146303578201530799-n.jpg" alt="Đỗ Tiến">
-            <img src="https://i.ibb.co/LdRF3d33/415934719-2618621848303125-7925422206276226397-n.jpg" alt="Tâm Lương">
+            <img id="photo-left" src="https://i.ibb.co/GQBdmm5Y/487749324-1319657995929492-146303578201530799-n.jpg" alt="Đỗ Tiến">
+            <div id="big-heart">❤️</div>
+            <img id="photo-right" src="https://i.ibb.co/LdRF3d33/415934719-2618621848303125-7925422206276226397-n.jpg" alt="Tâm Lương">
         </div>
         <!-- <div class="message">Em đồng ý làm vợ anh nhé? 💍</div> -->
         <div class="typewriter">Em đồng ý làm vợ anh nhé? 💍</div>
@@ -416,11 +477,6 @@ canvas.fireworks {
                             alt="photo-2025-06-17-10-10-54" border="0">
                     </a>
                 </div>
-                <!-- <div class="swiper-slide"><a href="https://i.ibb.co/LX4JjXKX/photo-2025-06-17-10-10-51.jpg"
-                        data-fancybox="gallery">
-                        <img src="https://i.ibb.co/LX4JjXKX/photo-2025-06-17-10-10-51.jpg"
-                            alt="photo-2025-06-17-10-10-51" border="0"></a>
-                </div> -->
                 <div class="swiper-slide">
                     <a href="https://i.ibb.co/dwJQf1KT/photo-2025-06-17-10-07-53.jpg" data-fancybox="gallery"
                         data-caption="Lần đầu tiên xem pháo hoa cùng bạn ấy 🎆">
@@ -443,19 +499,6 @@ canvas.fireworks {
                         <img src="https://i.ibb.co/S4GtnMRW/photo-2025-06-17-10-10-33.jpg"
                             alt="photo-2025-06-17-10-10-33" border="0"></a>
                 </div>
-                <!-- <div class="swiper-slide"><a
-                        href="https://i.ibb.co/LdRF3d33/415934719-2618621848303125-7925422206276226397-n.jpg"
-                        data-fancybox="gallery" data-caption="Lương Thị Tâm">
-                        <img src="https://i.ibb.co/LdRF3d33/415934719-2618621848303125-7925422206276226397-n.jpg"
-                            alt="415934719-2618621848303125-7925422206276226397-n" border="0"></a>
-                </div> -->
-                <!-- <div class="swiper-slide"><a
-                        href="https://i.ibb.co/GQBdmm5Y/487749324-1319657995929492-146303578201530799-n.jpg"
-                        data-fancybox="gallery" data-caption="Đỗ Bá Tiến">
-                        <img src="https://i.ibb.co/GQBdmm5Y/487749324-1319657995929492-146303578201530799-n.jpg"
-                            alt="487749324-1319657995929492-146303578201530799-n" border="0"></a>
-                </div> -->
-
                 <div class="swiper-slide">
                     <a href="https://i.ibb.co/TM6G824r/photo-2025-06-17-09-43-10.jpg" data-fancybox="gallery"
                         data-caption="Hồ Linh Đàm cùng nhau mỗi ngày"><img
@@ -544,6 +587,21 @@ canvas.fireworks {
 
         function triggerFireworks() {
             alert('Anh yêu em rất nhiều! 💖');
+           
+            const left = document.getElementById('photo-left');
+            const right = document.getElementById('photo-right');
+            const heart = document.getElementById('big-heart');
+
+            left.style.animation = 'slideInLeft 2s ease-out forwards';
+            right.style.animation = 'slideInRight 2s ease-out forwards';
+
+            // Sau khi ảnh di chuyển xong, hiện trái tim
+            setTimeout(() => {
+                heart.style.display = 'block';
+            }, 1300);
+            
+
+            // hiệu ứng pháo hoa
             const canvas = document.querySelector('.fireworks');
             const ctx = canvas.getContext('2d');
             let particles = [];
