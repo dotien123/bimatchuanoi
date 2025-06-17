@@ -153,21 +153,109 @@
             border-radius: 50%;
             padding: 12px;
             cursor: pointer;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             font-size: 20px;
             transition: transform 0.3s;
         }
+
         .music-toggle:hover {
             transform: scale(1.1);
         }
 
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to bottom, #ffd6e8, #d6faff);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .heart {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            background: red;
+            transform: rotate(45deg);
+            animation: float 10s linear infinite;
+        }
+        .heart::before, .heart::after {
+            content: "";
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            background: red;
+            border-radius: 50%;
+        }
+        .heart::before {
+            top: -10px;
+            left: 0;
+        }
+        .heart::after {
+            left: -10px;
+            top: 0;
+        }
+
+        @keyframes float {
+            0% {
+                bottom: 0;
+                opacity: 1;
+            }
+            100% {
+                bottom: 100%;
+                opacity: 0;
+            }
+        }
+
+        .typewriter {
+            width: fit-content;
+            margin: 40px auto;
+            font-size: 2.5em;
+            color: #d63384;
+            font-weight: bold;
+            text-shadow: 0 0 10px white;
+            border-right: .15em solid #ff69b4;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #ff69b4; }
+        }
+
+        .love-note {
+            margin-top: 80px;
+            padding: 50px 20px;
+            text-align: center;
+            background: url('https://i.ibb.co/S4GtnMRW/photo-2025-06-17-10-10-33.jpg') center/cover no-repeat;
+            color: white;
+            text-shadow: 0 0 5px black;
+        }
+
+        .love-note h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .love-note p {
+            font-size: 1.3em;
+            max-width: 600px;
+            margin: 0 auto;
+        }
     </style>
 </head>
 
 <body>
 
     <!-- Button phát nhạc -->
-    <audio src="https://raw.githubusercontent.com/dotien123/mylove/main/i-love-you-my-heart-292554.mp3" controls="" autoplay="" id="bg-music"></audio>
+    <audio src="https://raw.githubusercontent.com/dotien123/mylove/main/i-love-you-my-heart-292554.mp3" controls=""
+        autoplay="" id="bg-music"></audio>
     <div class="music-toggle" onclick="toggleMusic()" id="musicBtn">🔇</div>
 
     <style>
@@ -179,7 +267,7 @@
         const music = document.getElementById('bg-music');
         const btn = document.getElementById('musicBtn');
         let playing = false;
-        
+
         function toggleMusic() {
             if (playing) {
                 music.pause();
@@ -207,8 +295,15 @@
             <img src="https://i.ibb.co/GQBdmm5Y/487749324-1319657995929492-146303578201530799-n.jpg" alt="Đỗ Tiến">
             <img src="https://i.ibb.co/LdRF3d33/415934719-2618621848303125-7925422206276226397-n.jpg" alt="Tâm Lương">
         </div>
-        <div class="message">Em đồng ý làm vợ anh nhé? 💍</div>
+        <!-- <div class="message">Em đồng ý làm vợ anh nhé? 💍</div> -->
+        <div class="typewriter">Em đồng ý làm vợ anh nhé? 💍</div>
         <button class="button" onclick="alert('Anh yêu em rất nhiều! 💖')">Đồng ý 💕</button>
+    </div>
+
+    <div class="love-note">
+        <h2>Gửi em!</h2>
+        <p>Chúng ta đã cùng nhau trải qua bao nhiêu khoảnh khắc, từ những điều nhỏ bé nhất đến những chuyến đi lớn lao.
+            Anh muốn mỗi ngày tiếp theo trong đời sẽ là một chương mới – có em bên cạnh. Anh yêu em! 💖</p>
     </div>
 
     <div class="gallery">
@@ -216,13 +311,17 @@
         <div class="swiper gallery-slider">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                    <a href="https://i.ibb.co/WN9pV1cc/photo-2025-06-17-10-10-58.jpg" data-fancybox="gallery" data-caption="Lần đầu chụp ảnh cho bạn ấy nè 💖">
-                        <img src="https://i.ibb.co/WN9pV1cc/photo-2025-06-17-10-10-58.jpg" alt="photo-2025-06-17-10-10-58" border="0">
+                    <a href="https://i.ibb.co/WN9pV1cc/photo-2025-06-17-10-10-58.jpg" data-fancybox="gallery"
+                        data-caption="Lần đầu chụp ảnh cho bạn ấy nè 💖">
+                        <img src="https://i.ibb.co/WN9pV1cc/photo-2025-06-17-10-10-58.jpg"
+                            alt="photo-2025-06-17-10-10-58" border="0">
                     </a>
                 </div>
                 <div class="swiper-slide">
-                    <a href="https://i.ibb.co/V01wS3Fq/photo-2025-06-17-10-10-54.jpg" data-fancybox="gallery" data-caption="Bạn ý đi du lịch đảo 🌊">
-                        <img src="https://i.ibb.co/V01wS3Fq/photo-2025-06-17-10-10-54.jpg"  alt="photo-2025-06-17-10-10-54" border="0">
+                    <a href="https://i.ibb.co/V01wS3Fq/photo-2025-06-17-10-10-54.jpg" data-fancybox="gallery"
+                        data-caption="Bạn ý đi du lịch đảo 🌊">
+                        <img src="https://i.ibb.co/V01wS3Fq/photo-2025-06-17-10-10-54.jpg"
+                            alt="photo-2025-06-17-10-10-54" border="0">
                     </a>
                 </div>
                 <!-- <div class="swiper-slide"><a href="https://i.ibb.co/LX4JjXKX/photo-2025-06-17-10-10-51.jpg"
@@ -231,8 +330,8 @@
                             alt="photo-2025-06-17-10-10-51" border="0"></a>
                 </div> -->
                 <div class="swiper-slide">
-                    <a href="https://i.ibb.co/dwJQf1KT/photo-2025-06-17-10-07-53.jpg"
-                        data-fancybox="gallery" data-caption="Lần đầu tiên xem pháo hoa cùng bạn ấy 🎆">
+                    <a href="https://i.ibb.co/dwJQf1KT/photo-2025-06-17-10-07-53.jpg" data-fancybox="gallery"
+                        data-caption="Lần đầu tiên xem pháo hoa cùng bạn ấy 🎆">
                         <img src="https://i.ibb.co/dwJQf1KT/photo-2025-06-17-10-07-53.jpg"
                             alt="photo-2025-06-17-10-07-53" border="0">
                     </a>
@@ -266,7 +365,8 @@
                 </div> -->
 
                 <div class="swiper-slide">
-                    <a href="https://i.ibb.co/TM6G824r/photo-2025-06-17-09-43-10.jpg" data-fancybox="gallery" data-caption="Hồ Linh Đàm cùng nhau mỗi ngày"><img
+                    <a href="https://i.ibb.co/TM6G824r/photo-2025-06-17-09-43-10.jpg" data-fancybox="gallery"
+                        data-caption="Hồ Linh Đàm cùng nhau mỗi ngày"><img
                             src="https://i.ibb.co/TM6G824r/photo-2025-06-17-09-43-10.jpg" /></a>
                 </div>
                 <div class="swiper-slide"><a href="https://i.ibb.co/n8tMhjzy/photo-2025-06-17-09-43-23.jpg"
@@ -282,36 +382,37 @@
                         data-fancybox="gallery" data-caption="Bức ảnh đầu tiên bạn ý đăng tui nè"><img
                             src="https://i.ibb.co/twyyMBdz/photo-2025-06-17-09-43-45.jpg" /></a></div>
                 <div class="swiper-slide"><a href="https://i.ibb.co/84mPMfFX/photo-2025-06-17-09-43-48.jpg"
-                        data-fancybox="gallery" data-caption="Nụ cười của người chiến thắng (sinh nhật đầu tiên của tôi có bạn ý)"><img
+                        data-fancybox="gallery"
+                        data-caption="Nụ cười của người chiến thắng (sinh nhật đầu tiên của tôi có bạn ý)"><img
                             src="https://i.ibb.co/84mPMfFX/photo-2025-06-17-09-43-48.jpg" /></a></div>
                 <div class="swiper-slide">
-                    <a href="https://i.ibb.co/Hfd2R1v5/photo-2025-06-17-09-43-52.jpg"
-                        data-fancybox="gallery" data-caption="Vẫn là hồ tây lông gió">
+                    <a href="https://i.ibb.co/Hfd2R1v5/photo-2025-06-17-09-43-52.jpg" data-fancybox="gallery"
+                        data-caption="Vẫn là hồ tây lông gió">
                         <img src="https://i.ibb.co/Hfd2R1v5/photo-2025-06-17-09-43-52.jpg" />
                     </a>
                 </div>
                 <div class="swiper-slide">
-                    <a href="https://i.ibb.co/Wvx1zc6d/photo-2025-05-30-16-14-49.jpg"
-                        data-fancybox="gallery" data-caption="Tươi không cần tưới">
+                    <a href="https://i.ibb.co/Wvx1zc6d/photo-2025-05-30-16-14-49.jpg" data-fancybox="gallery"
+                        data-caption="Tươi không cần tưới">
                         <img src="https://i.ibb.co/Wvx1zc6d/photo-2025-05-30-16-14-49.jpg" />
                     </a>
                 </div>
                 <div class="swiper-slide">
-                    <a href="https://i.ibb.co/xSWcSwCr/photo-2025-06-17-09-43-55.jpg"
-                        data-fancybox="gallery" data-caption="Như nam thần :))">
+                    <a href="https://i.ibb.co/xSWcSwCr/photo-2025-06-17-09-43-55.jpg" data-fancybox="gallery"
+                        data-caption="Như nam thần :))">
                         <img src="https://i.ibb.co/xSWcSwCr/photo-2025-06-17-09-43-55.jpg" />
                     </a>
                 </div>
                 <div class="swiper-slide">
-                    <a href="https://i.ibb.co/v67JjVxZ/photo-2025-06-17-09-43-58.jpg"
-                        data-fancybox="gallery" data-caption="Bữa trưa vui vẻ">
-                        <img  src="https://i.ibb.co/v67JjVxZ/photo-2025-06-17-09-43-58.jpg" />
+                    <a href="https://i.ibb.co/v67JjVxZ/photo-2025-06-17-09-43-58.jpg" data-fancybox="gallery"
+                        data-caption="Bữa trưa vui vẻ">
+                        <img src="https://i.ibb.co/v67JjVxZ/photo-2025-06-17-09-43-58.jpg" />
                     </a>
                 </div>
 
                 <div class="swiper-slide">
-                    <a href="https://i.ibb.co/4Zb7gBw7/photo-2025-06-17-09-44-02.jpg"
-                        data-fancybox="gallery" data-caption="Cafe đường tàu cùng bạn ấy">
+                    <a href="https://i.ibb.co/4Zb7gBw7/photo-2025-06-17-09-44-02.jpg" data-fancybox="gallery"
+                        data-caption="Cafe đường tàu cùng bạn ấy">
                         <img src="https://i.ibb.co/4Zb7gBw7/photo-2025-06-17-09-44-02.jpg" />
                     </a>
                 </div>
@@ -333,7 +434,19 @@
                 disableOnInteraction: false
             }
         });
+    
+        // Tạo hiệu ứng trái tim bay
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = 5 + Math.random() * 5 + "s";
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 10000);
+        }
+        setInterval(createHeart, 300);
     </script>
+
 </body>
 
 </html>
